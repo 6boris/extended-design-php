@@ -52,7 +52,7 @@ class OrderServices
      */
     public static function GetOrderByUser()
     {
-        $orders = Order::where('user_id', '=', auth()->id())
+            $orders = Order::where('user_id', '=', auth()->id())
             ->leftJoin('users', 'orders.user_id', '=', 'users.id')
             ->leftJoin('pay_channels', 'orders.pay_channel_id', '=', 'pay_channels.id')
             ->leftJoin('pay_types', 'orders.pay_type_id', '=', 'pay_types.id')

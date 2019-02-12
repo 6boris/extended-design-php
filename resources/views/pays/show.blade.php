@@ -11,13 +11,14 @@
                     </div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ URL('') }}">
+                        <form method="POST" action="{{ URL('pays/callback') }}/{{$order->channel_code}}">
                             @csrf
+                            <input type="hidden" name="order_num" value="{{$order->order_num}}">
 
                             <div class="form-group row">
                                 <label for="email"
                                        class="col-md-4 col-form-label text-md-right">Order Number</label>
-                                <input type="text" class="col-md-6" disabled value="{{ $order->order_num }}">
+                                <input type="text" class="col-md-6" name="order_num" disabled value="{{ $order->order_num }}">
                             </div>
 
                             <div class="form-group row">
@@ -35,7 +36,8 @@
                             <div class="form-group row">
                                 <label for="email"
                                        class="col-md-4 col-form-label text-md-right">PayType</label>
-                                <input type="text" class="col-md-6" disabled value="{{ $order->channel_name }}-{{ $order->type_name }}">
+                                <input type="text" class="col-md-6" disabled
+                                       value="{{ $order->channel_name }}-{{ $order->type_name }}">
                             </div>
 
                             <div class="form-group row">
@@ -44,17 +46,8 @@
                                 <input type="text" class="col-md-6" disabled value="{{ $order->status }}">
                             </div>
 
-                            <div class="form-group row">
-                                <label for="email"
-                                       class="col-md-4 col-form-label text-md-right">Finist_at</label>
-                                <input type="text" class="col-md-6" disabled value="{{ $order->finished_at }}">
-                            </div>
-
                             <div class="form-group row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <a href="{{URL('pays')}}/{{$order->id}}" class="btn btn-primary">Pay</a>
-                                    <a href=" {{URL('orders')}} " class="btn btn-dark">Back</a>
-                                </div>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Pay Now</button>
                             </div>
                         </form>
                     </div>

@@ -44,7 +44,6 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->input());
         $order = OrderServices::CreateOrder($request);
 
         return redirect()->to('orders/' . $order->id);
