@@ -32,6 +32,11 @@
                                 <input type="text" class="col-md-6" disabled value="{{ $order->created_at }}">
                             </div>
 
+                            <div class="form-group row">
+                                <label for="email"
+                                       class="col-md-4 col-form-label text-md-right">PayType</label>
+                                <input type="text" class="col-md-6" disabled value="{{ $order->channel_name }}-{{ $order->type_name }}">
+                            </div>
 
                             <div class="form-group row">
                                 <label for="email"

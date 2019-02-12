@@ -29,8 +29,10 @@ class OrderController extends Controller
     public function create()
     {
         $pay_channels = PayServices::GetAllPayChannel();
-        return response()->json($pay_channels);
-        return view('orders.create');
+//        dd($pay_channels);
+//		return response()->json($pay_channels);
+        return view('orders.create')
+            ->with('channels', $pay_channels);
     }
 
     /**
@@ -42,6 +44,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request->input());
         $order = OrderServices::CreateOrder($request);
 
         return redirect()->to('orders/' . $order->id);
@@ -80,8 +83,10 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(
+        Request $request,
+        $id
+    ) {
     }
 
     /**

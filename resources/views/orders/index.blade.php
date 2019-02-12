@@ -18,6 +18,7 @@
                                 <th scope="col">Account</th>
                                 <th scope="col">User</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">PayType</th>
                                 <th scope="col">Created_at</th>
                                 <th scope="col">Finised_at</th>
                                 <th scope="col">Option</th>
@@ -31,6 +32,10 @@
                                     <td>{{ $order->account }}</td>
                                     <th>{{ $order->name }}</th>
                                     <td>{{ $order->status }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary btn-sm">{{ $order->channel_name }}</button>
+                                        <button type="button" class="btn btn-primary btn-sm">{{ $order->type_name }}</button>
+                                    </td>
                                     <td>{{ $order->created_at }}</td>
                                     <td>{{ $order->finised_at }}</td>
                                     <td align="center">

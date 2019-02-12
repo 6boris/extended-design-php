@@ -30,6 +30,26 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <div class="col ">
+                                    <select class="form-control" name="channel_code" id="channels">
+                                        @foreach($channels as $channel)
+                                            <option value="{{$channel['code']}}">{{$channel['name']}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="col ">
+                                    @foreach($channels as $channel)
+                                        <select class="form-control paychannel-type" name="type_code"
+                                                id="channel-code-{{$channel['code']}}">
+                                            @foreach($channel['types'] as $type)
+                                                <option value="{{$type->code}}"> {{$type->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    @endforeach
+                                </div>
+                            </div>
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
@@ -44,3 +64,20 @@
         </div>
     </div>
 @endsection
+
+
+@section('javascript')
+    <script>
+        $(document).ready(function () {
+            $('.paychannel-type').css('display', 'none').prop('disabled', 'disabled');
+            $('.paychannel-type:first').css('display', 'block').prop('disabled', false);
+
+            $("#channels").bind("change", function () {
+                channel_code = this.value;
+                $('.paychannel-type').css('display', 'none').prop('disabled', 'disabled');
+                $('#channel-code-' + channel_code).css('display', 'block').prop('disabled', false);
+            });
+        });
+    </script>
+@endsection
+
